@@ -1,16 +1,3 @@
 ---
-// src/pages/index.astro
+return Astro.redirect('/es/', 302);
 ---
-<!DOCTYPE html>
-<html>
-<head>
-    <script is:inline>
-        const supported = ["es", "en"];
-        const userLang = (navigator.language || navigator.userLanguage).slice(0, 2).toLowerCase();
-        const lang = supported.includes(userLang) ? userLang : "es";
-        window.location.replace("/" + lang + "/");
-    </script>
-    <meta http-equiv="refresh" content={`0;url=/es/`} />
-</head>
-<body style="background: #0a0a0f;"></body>
-</html>

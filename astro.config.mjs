@@ -5,5 +5,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [tailwind(), react()],
   trailingSlash: 'always',
-  // Sin redirects aquí — el index.astro hace la detección de idioma client-side
+  build: {
+    format: 'directory'   // Opcional, ayuda con trailingSlash
+  }
 });
