@@ -1,0 +1,25 @@
+---
+// src/pages/index.astro
+// Amplify sirve este HTML en "/" — el script detecta el idioma del navegador
+// y redirige a /es/ o /en/ sin necesidad de SSR.
+---
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <title>Redirigiendo...</title>
+    <script is:inline>
+      (function () {
+        var supported = ["es", "en"];
+        var raw  = (navigator.language || "es").slice(0, 2).toLowerCase();
+        var lang = supported.indexOf(raw) !== -1 ? raw : "es";
+        window.location.replace("/" + lang + "/");
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=/es/" />
+    </noscript>
+  </head>
+  <body></body>
+</html>

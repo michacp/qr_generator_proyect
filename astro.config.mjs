@@ -4,13 +4,8 @@ import react from '@astrojs/react';
 
 export default defineConfig({
   integrations: [tailwind(), react()],
-
-  trailingSlash: 'always',        // Recomendado porque usas /es/ y /en/
-
+  trailingSlash: 'always',
   redirects: {
-    '/': '/es/',                  // Root siempre a español
+    '/': '/es/', // respaldo si el middleware no aplica
   },
-
-  // Opcional: Prefijo base si en el futuro quieres cambiar
-  // site: 'https://gqr.teamcellmania.com',
 });
