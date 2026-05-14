@@ -1,26 +1,16 @@
 ---
 // src/pages/index.astro
-// Amplify sirve este HTML en "/" brevemente antes de redirigir.
-// Sin texto visible, sin flash — solo el script que detecta idioma.
 ---
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="robots" content="noindex, nofollow" />
-    <title>QR TeamCellMania</title>
-    <style>body{margin:0;background:#0a0a0f;}</style>
+<!DOCTYPE html>
+<html>
+<head>
     <script is:inline>
-      (function () {
-        var supported = ["es", "en"];
-        var raw = ((navigator.languages && navigator.languages[0]) || navigator.language || "es")
-          .slice(0, 2).toLowerCase();
-        var lang = supported.indexOf(raw) !== -1 ? raw : "es";
+        const supported = ["es", "en"];
+        const userLang = (navigator.language || navigator.userLanguage).slice(0, 2).toLowerCase();
+        const lang = supported.includes(userLang) ? userLang : "es";
         window.location.replace("/" + lang + "/");
-      })();
     </script>
-    <noscript><meta http-equiv="refresh" content="0; url=/es/" /></noscript>
-  </head>
-  <body></body>
+    <meta http-equiv="refresh" content={`0;url=/es/`} />
+</head>
+<body style="background: #0a0a0f;"></body>
 </html>
