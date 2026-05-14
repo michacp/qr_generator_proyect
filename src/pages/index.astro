@@ -1,6 +1,9 @@
+ex · ASTRO
+Copiar
+
 ---
-// src/pages/index.astro
-// Redirige / → /es/ (idioma por defecto)
-import { DEFAULT_LOCALE } from '../i18n';
-return Astro.redirect(`/${DEFAULT_LOCALE}/`, 301);
+// Este archivo puede eliminarse — el redirect lo maneja astro.config.mjs
+// Se deja vacío como respaldo por si el hosting no procesa los redirects del config.
 ---
+<meta http-equiv="refresh" content="0; url=/es/" />
+<script>window.location.replace('/es/');</script>
