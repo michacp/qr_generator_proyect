@@ -5,7 +5,5 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [tailwind(), react()],
   trailingSlash: 'always',
-  redirects: {
-    '/': '/es/', // respaldo si el middleware no aplica
-  },
+  // Sin redirects aquí — el index.astro hace la detección de idioma client-side
 });
