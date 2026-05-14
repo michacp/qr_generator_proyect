@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "Generador de Códigos QR Gratis | QR TeamCellMania",
+    "description": "Crea códigos QR personalizados con colores, logos y diferentes estilos. Gratis, sin registro y con descarga en alta calidad."
+  },
+  "header": {
+    "badge": "QR Studio",
+    "title_line1": "Generador de",
+    "title_line2": "Códigos QR",
+    "subtitle": "Personaliza colores, formas y logo en segundos"
+  },
+  "howto": "¿Cómo funciona?",
+  "form": {
+    "content_label": "Contenido del QR",
+    "content_placeholder": "https://example.com",
+    "content_tooltip": "Escribe aquí la URL o texto que quieres codificar. Por ejemplo: https://tu-web.com, un número de WhatsApp como https://wa.me/593912345678, o cualquier texto libre.",
+    "content_hint": "Puede ser una URL, número de teléfono o cualquier texto.",
+    "model_label": "Estilo de puntos",
+    "model_tooltip": "Define la forma visual de los módulos que forman el QR. Todos los estilos son igualmente escaneables; elige el que mejor encaje con tu marca.",
+    "model_hint": "'Redondeado' y 'Puntos' lucen más modernos. 'Cuadrado' es el clásico.",
+    "dots_color_label": "Color puntos",
+    "dots_color_tooltip": "Es el color de los módulos del QR. Usa colores oscuros sobre fondo claro para que los lectores lo detecten bien.",
+    "bg_color_label": "Color fondo",
+    "bg_color_tooltip": "Es el color del fondo del QR. Lo más seguro es blanco o un color muy claro.",
+    "qr_margin_label": "Margen QR (px)",
+    "qr_margin_tooltip": "Espacio en blanco alrededor del código QR. Un margen mínimo de 10px ayuda a que los lectores lo detecten correctamente al imprimirlo.",
+    "qr_margin_hint": "Recomendado: entre 10 y 20.",
+    "img_margin_label": "Margen imagen (px)",
+    "img_margin_tooltip": "Espacio entre tu logo central y los puntos del QR. Si el logo tapa demasiado el código, aumenta este valor.",
+    "img_margin_hint": "Recomendado: entre 5 y 15.",
+    "image_section_label": "Logo / Imagen central",
+    "dropzone_text": "Arrastra una imagen o",
+    "dropzone_cta": "haz clic",
+    "dropzone_hint": "PNG, JPG, SVG — max 5 MB",
+    "crop_apply": "Aplicar recorte",
+    "crop_cancel": "Cancelar",
+    "image_applied_title": "Imagen aplicada",
+    "image_applied_hint": "Aparecerá en el centro del QR"
+  },
+  "models": {
+    "square": "Cuadrado",
+    "rounded": "Redondeado",
+    "dots": "Puntos",
+    "extra-rounded": "Extra Redondo",
+    "classy": "Estrella",
+    "classy-rounded": "Estrella Redonda"
+  },
+  "preview": {
+    "title": "Vista previa",
+    "placeholder": "Tu QR aparecerá aquí",
+    "generating": "Generando…",
+    "btn_generate": "Generar QR",
+    "btn_download": "Descargar PNG",
+    "config_title": "Configuración activa",
+    "config_style": "Estilo",
+    "config_qr_margin": "Margen QR",
+    "config_img_margin": "Margen img",
+    "config_dots": "Puntos",
+    "config_bg": "Fondo"
+  },
+  "tour": {
+    "step_counter": "{current} / {total}",
+    "btn_next": "Siguiente →",
+    "btn_finish": "¡Empezar! 🚀",
+    "btn_prev": "← Anterior",
+    "btn_skip": "Saltar tutorial",
+    "steps": [
+      {
+        "emoji": "✏️",
+        "title": "Escribe el contenido",
+        "description": "Ingresa la URL o texto que quieres que el QR lleve. Puede ser un link a tu negocio, red social, WhatsApp o cualquier texto."
+      },
+      {
+        "emoji": "🎨",
+        "title": "Personaliza el estilo",
+        "description": "Elige la forma de los puntos y los colores. El color de puntos es el QR en sí; el color de fondo es lo que queda detrás."
+      },
+      {
+        "emoji": "🖼️",
+        "title": "Agrega tu logo (opcional)",
+        "description": "Sube una imagen y recórtala para que aparezca en el centro del QR. Funciona perfecto con logos de marca. Máximo 5 MB."
+      },
+      {
+        "emoji": "📐",
+        "title": "Ajusta los márgenes",
+        "description": "El margen del QR es el espacio alrededor del código. El margen de imagen es el espacio entre tu logo y los puntos del QR."
+      },
+      {
+        "emoji": "⬇️",
+        "title": "Descarga tu QR",
+        "description": "Haz clic en 'Generar QR' para ver la vista previa y luego en 'Descargar PNG' para guardarlo en alta calidad."
+      }
+    ]
+  }
+}

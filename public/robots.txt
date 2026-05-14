@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gqr.teamcellmania.com/sitemap.xml

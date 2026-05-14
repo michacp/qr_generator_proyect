@@ -1,0 +1,95 @@
+{
+  "meta": {
+    "title": "Free QR Code Generator | QR TeamCellMania",
+    "description": "Create custom QR codes with colors, logos and different styles. Free, no sign-up required, high quality download."
+  },
+  "header": {
+    "badge": "QR Studio",
+    "title_line1": "QR Code",
+    "title_line2": "Generator",
+    "subtitle": "Customize colors, shapes and logo in seconds"
+  },
+  "howto": "How does it work?",
+  "form": {
+    "content_label": "QR Content",
+    "content_placeholder": "https://example.com",
+    "content_tooltip": "Enter the URL or text you want to encode. For example: https://your-site.com, a WhatsApp link like https://wa.me/1234567890, or any free text.",
+    "content_hint": "Can be a URL, phone number or any text.",
+    "model_label": "Dot style",
+    "model_tooltip": "Defines the visual shape of the QR modules. All styles are equally scannable; pick the one that fits your brand best.",
+    "model_hint": "'Rounded' and 'Dots' look more modern. 'Square' is the classic.",
+    "dots_color_label": "Dots color",
+    "dots_color_tooltip": "The color of the QR modules. Use dark colors on a light background so scanners can detect it properly.",
+    "bg_color_label": "Background color",
+    "bg_color_tooltip": "The background color of the QR. White or very light colors work best for reliable scanning.",
+    "qr_margin_label": "QR margin (px)",
+    "qr_margin_tooltip": "White space around the QR code. A minimum of 10px helps scanners detect it correctly, especially when printed.",
+    "qr_margin_hint": "Recommended: between 10 and 20.",
+    "img_margin_label": "Image margin (px)",
+    "img_margin_tooltip": "Space between your center logo and the QR dots. If the logo covers too much of the code, increase this value.",
+    "img_margin_hint": "Recommended: between 5 and 15.",
+    "image_section_label": "Logo / Center image",
+    "dropzone_text": "Drag an image or",
+    "dropzone_cta": "click here",
+    "dropzone_hint": "PNG, JPG, SVG — max 5 MB",
+    "crop_apply": "Apply crop",
+    "crop_cancel": "Cancel",
+    "image_applied_title": "Image applied",
+    "image_applied_hint": "It will appear in the center of the QR"
+  },
+  "models": {
+    "square": "Square",
+    "rounded": "Rounded",
+    "dots": "Dots",
+    "extra-rounded": "Extra Rounded",
+    "classy": "Classy",
+    "classy-rounded": "Classy Rounded"
+  },
+  "preview": {
+    "title": "Preview",
+    "placeholder": "Your QR will appear here",
+    "generating": "Generating…",
+    "btn_generate": "Generate QR",
+    "btn_download": "Download PNG",
+    "config_title": "Active settings",
+    "config_style": "Style",
+    "config_qr_margin": "QR margin",
+    "config_img_margin": "Img margin",
+    "config_dots": "Dots",
+    "config_bg": "Background"
+  },
+  "tour": {
+    "step_counter": "{current} / {total}",
+    "btn_next": "Next →",
+    "btn_finish": "Let's start! 🚀",
+    "btn_prev": "← Back",
+    "btn_skip": "Skip tutorial",
+    "steps": [
+      {
+        "emoji": "✏️",
+        "title": "Enter the content",
+        "description": "Type the URL or text you want the QR to point to. It can be a link to your business, social media, WhatsApp or any free text."
+      },
+      {
+        "emoji": "🎨",
+        "title": "Customize the style",
+        "description": "Choose the shape of the dots and the colors. The dot color is the QR itself; the background color is what sits behind it."
+      },
+      {
+        "emoji": "🖼️",
+        "title": "Add your logo (optional)",
+        "description": "Upload an image and crop it to appear in the center of the QR. Works great with brand logos. Max 5 MB."
+      },
+      {
+        "emoji": "📐",
+        "title": "Adjust the margins",
+        "description": "The QR margin is the white space around the code. The image margin is the gap between your logo and the QR dots."
+      },
+      {
+        "emoji": "⬇️",
+        "title": "Download your QR",
+        "description": "Click 'Generate QR' to see the preview, then 'Download PNG' to save it in high quality, ready to use."
+      }
+    ]
+  }
+}

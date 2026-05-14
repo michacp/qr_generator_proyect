@@ -1,0 +1,32 @@
+/* src/styles/global.css
+   Solo lo que Tailwind no puede hacer directamente: carga de fuentes
+   y un par de resets de input[type=color] */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Color picker nativo ──────────────────────── */
+input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 0.5rem;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 0.5rem;
+}
+
+/* ── Scrollbar delgada ────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c0cefd; border-radius: 9999px; }
