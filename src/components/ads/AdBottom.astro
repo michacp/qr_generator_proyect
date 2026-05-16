@@ -1,0 +1,22 @@
+---
+// src/components/ads/AdBottom.astro
+// Molécula: banner de pie de página.
+// Desktop (sm+) → Leaderboard 728×90
+// Mobile (<sm)  → Mobile Banner 320×50
+import AdLeaderboard from './ad-scripts/AdLeaderboard.astro';
+import AdMobile      from './ad-scripts/AdMobile.astro';
+---
+<div
+  class="w-full flex justify-center overflow-hidden rounded-xl opacity-80 hover:opacity-100 transition-opacity"
+  aria-label="Publicidad"
+>
+  <!-- Desktop -->
+  <div class="hidden sm:block">
+    <AdLeaderboard />
+  </div>
+
+  <!-- Mobile -->
+  <div class="block sm:hidden">
+    <AdMobile />
+  </div>
+</div>

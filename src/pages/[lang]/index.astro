@@ -1,7 +1,9 @@
 ---
 // src/pages/[lang]/index.astro
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout  from '../../layouts/BaseLayout.astro';
 import QrGenerator from '../../components/QrGenerator';
+import AdSidebar   from '../../components/ads/AdSidebar.astro';
+import AdBottom    from '../../components/ads/AdBottom.astro';
 import { LOCALES, getTranslations } from '../../i18n';
 import type { Locale } from '../../i18n';
 
@@ -22,5 +24,25 @@ const alternateLangs = LOCALES.filter((l) => l !== lang);
   alternateLangs={alternateLangs}
   ogImageAlt={t.meta.og_image_alt}
 >
-  <QrGenerator client:only="react" t={t} lang={lang} />
+  <div class="flex flex-col min-h-screen">
+
+    <!-- App principal -->
+    <div class="flex-1">
+      <QrGenerator client:only="react" t={t} lang={lang} />
+    </div>
+
+    <!--
+      Banner sidebar 300×250 — alineado bajo el aside del QR (solo desktop).
+      Comparte el mismo max-width y padding del layout principal.
+    -->
+    <div class="max-w-5xl mx-auto w-full px-4 pb-4 flex justify-end">
+      <AdSidebar />
+    </div>
+
+    <!-- Banner inferior — leaderboard desktop / mobile banner en móvil -->
+    <div class="border-t border-white/[0.05] py-6 bg-[#0a0a0f]">
+      <AdBottom />
+    </div>
+
+  </div>
 </BaseLayout>
