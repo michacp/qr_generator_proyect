@@ -1,22 +1,48 @@
 ---
 // src/components/ads/AdBottom.astro
-// Molécula: banner de pie de página.
-// Desktop (sm+) → Leaderboard 728×90
-// Mobile (<sm)  → Mobile Banner 320×50
-import AdLeaderboard from './ad-scripts/AdLeaderboard.astro';
-import AdMobile      from './ad-scripts/AdMobile.astro';
+// Molécula: carga UN SOLO script según el ancho de pantalla.
+// Evita la colisión de atOptions cuando ambos scripts se cargan a la vez.
 ---
 <div
   class="w-full flex justify-center overflow-hidden rounded-xl opacity-80 hover:opacity-100 transition-opacity"
   aria-label="Publicidad"
+  id="ad-bottom-container"
 >
-  <!-- Desktop -->
-  <div class="hidden sm:block">
-    <AdLeaderboard />
-  </div>
-
-  <!-- Mobile -->
-  <div class="block sm:hidden">
-    <AdMobile />
-  </div>
 </div>
+
+<script is:inline>
+  (function() {
+    var container = document.getElementById('ad-bottom-container');
+    if (!container) return;
+
+    // Elegir formato según ancho real del viewport
+    var isMobile = window.innerWidth < 640;
+
+    var s = document.createElement('script');
+
+    if (isMobile) {
+      // 320×50 mobile
+      window.atOptions = {
+        'key'    : 'cf83aab7adf3186954ccfa6a1aabc2df',
+        'format' : 'iframe',
+        'height' : 50,
+        'width'  : 320,
+        'params' : {}
+      };
+      s.src = 'https://www.highperformanceformat.com/cf83aab7adf3186954ccfa6a1aabc2df/invoke.js';
+    } else {
+      // 728×90 desktop
+      window.atOptions = {
+        'key'    : '2450bd01dbf5801b733188bd51add913',
+        'format' : 'iframe',
+        'height' : 90,
+        'width'  : 728,
+        'params' : {}
+      };
+      s.src = 'https://www.highperformanceformat.com/2450bd01dbf5801b733188bd51add913/invoke.js';
+    }
+
+    s.async = true;
+    container.appendChild(s);
+  })();
+</script>
