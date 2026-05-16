@@ -4,121 +4,208 @@ import '../styles/global.css';
 import type { Locale } from '../i18n';
 
 export interface Props {
-  title?: string;
-  description?: string;
-  lang?: Locale;
-  canonicalUrl?: string;
-  ogImage?: string;
+  title?:          string;
+  description?:    string;
+  lang?:           Locale;
+  canonicalUrl?:   string;
+  ogImage?:        string;
+  ogImageAlt?:     string;
   alternateLangs?: Locale[];
 }
 
 const {
-  title = 'Generador de Códigos QR Gratis | QR TeamCellMania',
-  description = 'Crea códigos QR personalizados con colores, logos y diferentes estilos. Gratis, sin registro y con descarga en alta calidad.',
-  lang = 'es',
-  canonicalUrl = `https://gqr.teamcellmania.com/${lang}/`,
-  ogImage = 'https://gqr.teamcellmania.com/og-image.png',
+  title          = 'Generador de Códigos QR Gratis Online | PNG, SVG, JPEG, WebP | TeamCellMania',
+  description    = 'Crea códigos QR gratis y personalizados: URL, texto y WiFi. Descarga en PNG, SVG, JPEG o WebP hasta 2048×2048px. Agrega tu logo, elige colores y estilos. Sin registro.',
+  lang           = 'es',
+  canonicalUrl   = `https://gqr.teamcellmania.com/${lang}/`,
+  ogImage        = 'https://gqr.teamcellmania.com/og-image.png',
+  ogImageAlt     = 'Generador de códigos QR gratis — descarga en PNG, SVG, JPEG o WebP con logo y colores — TeamCellMania',
   alternateLangs = [],
 } = Astro.props;
 
 const siteName = 'QR TeamCellMania';
 const localeMap: Record<string, string> = { es: 'es_EC', en: 'en_US' };
-
-// Clave de Google Analytics desde .env
-const gaId = import.meta.env.PUBLIC_GA_ID;
+const keywordsMap: Record<string, string> = {
+  es: 'generador QR gratis, crear código QR online, descargar QR PNG SVG JPEG WebP, QR personalizado con logo, QR WiFi gratis, QR con colores, código QR sin registro, QR alta resolución 2048px, generador QR Ecuador, QR para negocio, TeamCellMania',
+  en: 'free QR code generator, create QR code online, download QR PNG SVG JPEG WebP, custom QR with logo, free WiFi QR code, QR with colors, QR code no sign up, high resolution QR 2048px, QR code maker, TeamCellMania',
+};
 ---
-
 <!doctype html>
 <html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO básico -->
+    <!-- ═══ SEO básico ══════════════════════════════════════════ -->
     <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="keywords" content="generador QR, código QR personalizado, QR con logo, crear QR gratis, QR con colores, QR Ecuador, TeamCellMania" />
-    <meta name="author" content="TeamCellMania" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href={canonicalUrl} />
+    <meta name="description"  content={description} />
+    <meta name="keywords"     content={keywordsMap[lang] ?? keywordsMap['es']} />
+    <meta name="author"       content="TeamCellMania" />
+    <meta name="robots"       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="googlebot"    content="index, follow" />
+    <link rel="canonical"     href={canonicalUrl} />
 
-    <!-- hreflang -->
+    <!-- ═══ hreflang ════════════════════════════════════════════ -->
     {alternateLangs.map(l => (
-      <link
-        rel="alternate"
-        hreflang={l}
-        href={`https://gqr.teamcellmania.com/${l}/`}
-      />
+      <link rel="alternate" hreflang={l} href={`https://gqr.teamcellmania.com/${l}/`} />
     ))}
+    <link rel="alternate" hreflang={lang}      href={canonicalUrl} />
     <link rel="alternate" hreflang="x-default" href="https://gqr.teamcellmania.com/es/" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={siteName} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1200" />
+    <!-- ═══ Open Graph ═══════════════════════════════════════════ -->
+    <meta property="og:type"         content="website" />
+    <meta property="og:site_name"    content={siteName} />
+    <meta property="og:url"          content={canonicalUrl} />
+    <meta property="og:title"        content={title} />
+    <meta property="og:description"  content={description} />
+    <meta property="og:image"        content={ogImage} />
+    <meta property="og:image:width"  content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Generador de Códigos QR - TeamCellMania" />
-    <meta property="og:locale" content={localeMap[lang] ?? 'es_EC'} />
+    <meta property="og:image:type"   content="image/png" />
+    <meta property="og:image:alt"    content={ogImageAlt} />
+    <meta property="og:locale"       content={localeMap[lang] ?? 'es_EC'} />
+    {alternateLangs.map(l => (
+      <meta property="og:locale:alternate" content={localeMap[l]} />
+    ))}
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@teamcellmania" />
-    <meta name="twitter:title" content={title} />
+    <!-- ═══ Twitter / X Card ════════════════════════════════════ -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:site"        content="@teamcellmania" />
+    <meta name="twitter:creator"     content="@teamcellmania" />
+    <meta name="twitter:title"       content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image"       content={ogImage} />
+    <meta name="twitter:image:alt"   content={ogImageAlt} />
 
-    <!-- Schema.org JSON-LD -->
+    <!-- ═══ Schema.org JSON-LD ══════════════════════════════════ -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Generador de Códigos QR - TeamCellMania",
-        "url": "https://gqr.teamcellmania.com/",
-        "description": "Herramienta gratuita para crear códigos QR personalizados con colores, logos y distintos estilos de puntos.",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "Web",
-        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-        "publisher": {
-          "@type": "Organization",
-          "name": "TeamCellMania",
-          "url": "https://teamcellmania.com"
-        }
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://gqr.teamcellmania.com/#app",
+            "name": "Generador de Códigos QR - TeamCellMania",
+            "alternateName": ["QR Generator TeamCellMania", "QR TeamCellMania"],
+            "url": "https://gqr.teamcellmania.com/",
+            "description": "Herramienta 100% gratuita para crear códigos QR personalizados. Soporta URL, texto y WiFi. Descarga en PNG, SVG, JPEG o WebP hasta 2048×2048px. Sin registro.",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Web",
+            "browserRequirements": "Requires JavaScript",
+            "inLanguage": ["es", "en"],
+            "isAccessibleForFree": true,
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "description": "Completamente gratuito, sin registro ni límites de uso"
+            },
+            "featureList": [
+              "Generación de QR para URL, texto libre y redes WiFi",
+              "Descarga en PNG, SVG, JPEG y WebP",
+              "Resoluciones de 256×256 hasta 2048×2048 píxeles",
+              "Logo o imagen personalizada en el centro del QR",
+              "6 estilos de puntos: cuadrado, redondeado, puntos, extra redondo, estrella, estrella redonda",
+              "Personalización de color de puntos y color de fondo",
+              "Control de márgenes del QR e imagen central",
+              "Sin marca de agua en la descarga",
+              "Sin registro requerido",
+              "Interfaz disponible en español e inglés"
+            ],
+            "screenshot": "https://gqr.teamcellmania.com/og-image.png",
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://teamcellmania.com/#org",
+              "name": "TeamCellMania",
+              "url": "https://teamcellmania.com",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://teamcellmania.com/logo.png"
+              }
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://gqr.teamcellmania.com/#website",
+            "url": "https://gqr.teamcellmania.com/",
+            "name": "QR TeamCellMania",
+            "description": "Generador de códigos QR gratis con descarga en múltiples formatos",
+            "publisher": { "@id": "https://teamcellmania.com/#org" },
+            "inLanguage": ["es", "en"]
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿Es gratis el generador de QR?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí, completamente gratis. No requiere registro, no tiene límite de usos y la descarga en cualquier formato es sin marca de agua."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿En qué formatos puedo descargar el código QR?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Puedes descargar el QR en PNG (uso general), SVG (vectorial, escala sin perder calidad, ideal para impresión), JPEG (archivo más liviano) y WebP (web moderna). El SVG es el formato recomendado para impresión en gran formato."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué tamaños de imagen están disponibles?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Puedes descargar el QR en 256×256px (web y apps), 512×512px (redes sociales), 1024×1024px (impresión pequeña) y 2048×2048px (carteles e impresión en gran formato)."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué tipos de QR puedo crear?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Puedes crear QR para URLs o enlaces web, texto libre y redes WiFi. El QR de WiFi permite que alguien se conecte a tu red escaneando el código, sin escribir la contraseña."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Puedo poner mi logo en el QR?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí. Puedes subir cualquier imagen PNG, JPG o SVG, recortarla en forma cuadrada y colocarla en el centro del código QR. También puedes ajustar el margen entre el logo y los puntos del QR."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿El QR funciona para siempre?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Los QR generados son estáticos y no caducan. Si usas SVG puedes escalar el QR a cualquier tamaño sin perder calidad. Para URL, si el enlace deja de funcionar el QR seguirá siendo válido pero llevará a una página inexistente."
+                }
+              }
+            ]
+          }
+        ]
       }
     </script>
 
-    <!-- Iconos y Manifest -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#6d28d9" />
+    <!-- ═══ Iconos y Manifest ═════════════════════════════════ -->
+    <link rel="icon"             type="image/png"     href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon"             type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon"    href="/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#6d28d9" />
+    <link rel="apple-touch-icon" sizes="180x180"      href="/apple-touch-icon.png" />
+    <link rel="manifest"         href="/site.webmanifest" />
+    <meta name="theme-color"     content="#6d28d9" />
 
-    <!-- Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://gqr.teamcellmania.com" />
+    <!-- ═══ Performance ══════════════════════════════════════ -->
+    <link rel="preconnect"   href="https://fonts.googleapis.com" />
+    <link rel="preconnect"   href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   </head>
-
   <body class="bg-[#0a0a0f] font-body text-slate-200 antialiased min-h-screen">
     <slot />
   </body>
 </html>
-
-<!-- Google Analytics -->
-{gaId && (
-  <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
-)}
-
-<script define:vars={{ gaId }}>
-  if (gaId) {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', gaId);
-  }
-</script>

@@ -30,3 +30,7 @@ input[type="color"]::-webkit-color-swatch {
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #c0cefd; border-radius: 9999px; }
+
+/* ── Oculta scrollbar del ModelPicker manteniendo el scroll ── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }

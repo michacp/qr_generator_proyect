@@ -1,7 +1,11 @@
 {
   "meta": {
-    "title": "Free QR Code Generator | QR TeamCellMania",
-    "description": "Create custom QR codes with colors, logos and different styles. Free, no sign-up required, high quality download."
+    "title": "Free QR Code Generator Online | PNG, SVG, JPEG, WebP | TeamCellMania",
+    "description": "Create free custom QR codes: URL, text and WiFi. Download as PNG, SVG, JPEG or WebP up to 2048×2048px. Add your logo, choose colors and styles. No sign-up.",
+    "title_wifi": "Free WiFi QR Code Generator | Download PNG SVG | TeamCellMania",
+    "title_url": "Free URL QR Code Generator | PNG SVG WebP up to 2048px | TeamCellMania",
+    "title_text": "Free Text QR Code Generator | PNG SVG JPEG WebP | TeamCellMania",
+    "og_image_alt": "Free QR code generator — download as PNG, SVG, JPEG or WebP with logo and colors — TeamCellMania"
   },
   "header": {
     "badge": "QR Studio",
@@ -10,14 +14,30 @@
     "subtitle": "Customize colors, shapes and logo in seconds"
   },
   "howto": "How does it work?",
+  "qr_types": {
+    "url": {
+      "label": "URL",
+      "hint": "Link to a website, social media or any web address"
+    },
+    "text": {
+      "label": "Text",
+      "hint": "Message, phone number or any free text"
+    },
+    "wifi": {
+      "label": "WiFi",
+      "hint": "Share your network so others can connect by scanning"
+    }
+  },
   "form": {
-    "content_label": "QR Content",
-    "content_placeholder": "https://example.com",
-    "content_tooltip": "Enter the URL or text you want to encode. For example: https://your-site.com, a WhatsApp link like https://wa.me/1234567890, or any free text.",
-    "content_hint": "Can be a URL, phone number or any text.",
+    "content_label": "URL",
+    "content_placeholder_url": "https://example.com",
+    "content_placeholder_text": "Type your message here…",
+    "content_tooltip_url": "Enter the full web address including https://. For example: https://your-business.com or https://wa.me/1234567890",
+    "content_tooltip_text": "Any text you want to encode: a message, phone number, address, etc.",
+    "content_hint_url": "Always include https:// so it opens the browser when scanned.",
+    "content_hint_text": "Recommended max: 300 characters for best QR quality.",
     "model_label": "Dot style",
     "model_tooltip": "Defines the visual shape of the QR modules. All styles are equally scannable; pick the one that fits your brand best.",
-    "model_hint": "'Rounded' and 'Dots' look more modern. 'Square' is the classic.",
     "dots_color_label": "Dots color",
     "dots_color_tooltip": "The color of the QR modules. Use dark colors on a light background so scanners can detect it properly.",
     "bg_color_label": "Background color",
@@ -37,6 +57,25 @@
     "image_applied_title": "Image applied",
     "image_applied_hint": "It will appear in the center of the QR"
   },
+  "wifi": {
+    "ssid_label": "Network name (SSID)",
+    "ssid_placeholder": "My WiFi Network",
+    "ssid_tooltip": "The name that appears in the list of available WiFi networks. Exactly as written, including uppercase letters.",
+    "ssid_hint": "Copy the exact network name, including uppercase and spaces.",
+    "password_label": "Password",
+    "password_placeholder": "Your network password",
+    "password_tooltip": "Your WiFi password. When scanned, the device will connect automatically without typing it.",
+    "password_hint": "Leave empty if your network has no password.",
+    "security_label": "Security type",
+    "security_tooltip": "Your network's security protocol. Most modern networks use WPA/WPA2. If unsure, try WPA first.",
+    "security_hint": "WPA/WPA2 is most common on modern routers.",
+    "security_wpa": "WPA / WPA2 (recommended)",
+    "security_wep": "WEP (legacy)",
+    "security_none": "No password (open network)",
+    "hidden_label": "Hidden network",
+    "hidden_tooltip": "Enable this only if your router is configured to not broadcast the network name. Most networks are NOT hidden.",
+    "hidden_hint": "Usually off. Only use if your network doesn't appear in the WiFi list."
+  },
   "models": {
     "square": "Square",
     "rounded": "Rounded",
@@ -50,13 +89,18 @@
     "placeholder": "Your QR will appear here",
     "generating": "Generating…",
     "btn_generate": "Generate QR",
-    "btn_download": "Download PNG",
+    "btn_download": "Download",
     "config_title": "Active settings",
+    "config_type": "Type",
     "config_style": "Style",
     "config_qr_margin": "QR margin",
     "config_img_margin": "Img margin",
     "config_dots": "Dots",
-    "config_bg": "Background"
+    "config_bg": "Background",
+    "format_label": "Format",
+    "size_label": "Size",
+    "format_tooltip": "PNG has background and is most compatible. SVG is vector (ideal for printing at any size). JPEG is lighter but no transparency.",
+    "size_tooltip": "Larger size = better print quality. 300×300 is fine for screens; use 1200×1200 for professional printing."
   },
   "tour": {
     "step_counter": "{current} / {total}",
@@ -66,24 +110,24 @@
     "btn_skip": "Skip tutorial",
     "steps": [
       {
+        "emoji": "🔖",
+        "title": "Choose the QR type",
+        "description": "Select the content type: URL for web links, Text for messages, or WiFi to share your network easily."
+      },
+      {
         "emoji": "✏️",
-        "title": "Enter the content",
-        "description": "Type the URL or text you want the QR to point to. It can be a link to your business, social media, WhatsApp or any free text."
+        "title": "Fill in the content",
+        "description": "Fill in the fields based on the type chosen. For URL enter the web address; for WiFi, the network name and password."
       },
       {
         "emoji": "🎨",
         "title": "Customize the style",
-        "description": "Choose the shape of the dots and the colors. The dot color is the QR itself; the background color is what sits behind it."
+        "description": "Choose the dot shape by scrolling the options and adjust the colors. All styles are equally scannable."
       },
       {
         "emoji": "🖼️",
         "title": "Add your logo (optional)",
-        "description": "Upload an image and crop it to appear in the center of the QR. Works great with brand logos. Max 5 MB."
-      },
-      {
-        "emoji": "📐",
-        "title": "Adjust the margins",
-        "description": "The QR margin is the white space around the code. The image margin is the gap between your logo and the QR dots."
+        "description": "Upload an image to appear in the center of the QR. Works great with brand logos. Max 5 MB."
       },
       {
         "emoji": "⬇️",
@@ -91,5 +135,24 @@
         "description": "Click 'Generate QR' to see the preview, then 'Download PNG' to save it in high quality, ready to use."
       }
     ]
+  },
+  "download": {
+    "format_label": "Format",
+    "format_tooltip": "PNG for general use, SVG for lossless scaling (ideal for printing), JPEG for lighter files, WebP for modern web.",
+    "size_label": "Size",
+    "size_tooltip": "The pixel size of the downloaded image. Use 1024 or 2048 for printing; 512 is enough for web or social media.",
+    "btn_download": "Download",
+    "hints": {
+      "256": "Web / apps",
+      "512": "Social media",
+      "1024": "Small print",
+      "2048": "Posters / print"
+    },
+    "format_hints": {
+      "png": "Best for general use",
+      "svg": "Scales without quality loss",
+      "jpeg": "Lighter file size",
+      "webp": "Modern web"
+    }
   }
 }
