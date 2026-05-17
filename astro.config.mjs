@@ -6,6 +6,6 @@ export default defineConfig({
   integrations: [tailwind(), react()],
   trailingSlash: 'always',
   build: {
-    format: 'directory'   // Opcional, ayuda con trailingSlash
-  }
+    format: 'directory', // genera /es/index.html en vez de /es.html — necesario para trailingSlash
+  },
 });
