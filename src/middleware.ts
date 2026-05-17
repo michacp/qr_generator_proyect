@@ -8,13 +8,25 @@ export const onRequest = defineMiddleware((context, next) => {
     const url = new URL(context.request.url);
     const pathname = url.pathname;
 
-    // Si ya tiene idioma válido en la URL → dejar pasar
+    // === RUTAS QUE DEBEN IGNORAR EL MIDDLEWARE ===
+    const ignoredPaths = [
+        '/sitemap.xml',
+        '/robots.txt',
+        '/favicon.ico',
+        '/_astro/',      // assets de Astro
+        '/api/',          // si tienes APIs
+    ];
+
+    if (ignoredPaths.some(path => pathname.startsWith(path))) {
+        return next();
+    }
+
+    // Si ya tiene idioma válido → dejar pasar
     if (SUPPORTED_LANGS.some(lang => pathname.startsWith(`/${lang}`))) {
         return next();
     }
 
-    // Detectar idioma preferido del navegador desde Accept-Language
-    // Ej: "es-EC,es;q=0.9,en;q=0.8" → "es"
+    // Detectar idioma
     const acceptLanguage = context.request.headers.get('accept-language') ?? '';
     const detected = acceptLanguage
         .split(',')
@@ -22,6 +34,7 @@ export const onRequest = defineMiddleware((context, next) => {
         .find(lang => SUPPORTED_LANGS.includes(lang));
 
     const lang = detected ?? DEFAULT_LANG;
+
     const newPath = (pathname === '/' || pathname === '')
         ? `/${lang}/`
         : `/${lang}${pathname}`;
