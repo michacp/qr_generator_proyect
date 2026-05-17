@@ -1,19 +1,20 @@
 ---
-// src/components/ads/AdBottom.astro
-// Banner inferior — 728×90 desktop / 320×50 mobile.
-// Usa setTimeout para cargar DESPUÉS de AdTop y evitar colisión de atOptions.
+// src/components/ads/AdTop.astro
+// Banner superior — 728×90 desktop / 320×50 mobile.
+// Usa setTimeout(0) para ceder el turno al event loop antes de cargar,
+// evitando colisión con AdBottom que usa las mismas keys.
 ---
 <div
   class="w-full flex justify-center overflow-hidden opacity-80 hover:opacity-100 transition-opacity"
   aria-label="Publicidad"
-  id="ad-bottom-container"
+  id="ad-top-container"
 >
 </div>
 
 <script is:inline>
-  // Espera a que AdTop termine antes de sobreescribir atOptions
-  setTimeout(function() {
-    var container = document.getElementById('ad-bottom-container');
+  // Carga inmediata — es el primero en el DOM
+  (function() {
+    var container = document.getElementById('ad-top-container');
     if (!container) return;
 
     var isMobile = window.innerWidth < 640;
@@ -35,5 +36,5 @@
 
     s.async = true;
     container.appendChild(s);
-  }, 800); // espera a que el invoke.js de AdTop lea atOptions
+  })();
 </script>
