@@ -1,40 +1,32 @@
 ---
 // src/components/ads/AdTop.astro
-// Banner superior — 728×90 desktop / 320×50 mobile.
-// Usa setTimeout(0) para ceder el turno al event loop antes de cargar,
-// evitando colisión con AdBottom que usa las mismas keys.
+// Solo carga en producción — import.meta.env.PROD es true solo en `astro build`
+const isProd = import.meta.env.PROD;
 ---
-<div
-  class="w-full flex justify-center overflow-hidden opacity-80 hover:opacity-100 transition-opacity"
-  aria-label="Publicidad"
-  id="ad-top-container"
->
-</div>
 
-<script is:inline>
-  // Carga inmediata — es el primero en el DOM
-  (function() {
-    var container = document.getElementById('ad-top-container');
-    if (!container) return;
+{isProd && (
+  <div
+    class="w-full flex justify-center overflow-hidden opacity-80 hover:opacity-100 transition-opacity"
+    aria-label="Publicidad"
+    id="ad-top-container"
+  >
+  </div>
 
-    var isMobile = window.innerWidth < 640;
-    var s = document.createElement('script');
-
-    if (isMobile) {
-      window.atOptions = {
-        'key': 'cf83aab7adf3186954ccfa6a1aabc2df',
-        'format': 'iframe', 'height': 50, 'width': 320, 'params': {}
-      };
-      s.src = 'https://www.highperformanceformat.com/cf83aab7adf3186954ccfa6a1aabc2df/invoke.js';
-    } else {
-      window.atOptions = {
-        'key': '2450bd01dbf5801b733188bd51add913',
-        'format': 'iframe', 'height': 90, 'width': 728, 'params': {}
-      };
-      s.src = 'https://www.highperformanceformat.com/2450bd01dbf5801b733188bd51add913/invoke.js';
-    }
-
-    s.async = true;
-    container.appendChild(s);
-  })();
-</script>
+  <script is:inline>
+    (function() {
+      var container = document.getElementById('ad-top-container');
+      if (!container) return;
+      var isMobile = window.innerWidth < 640;
+      var s = document.createElement('script');
+      if (isMobile) {
+        window.atOptions = { 'key': 'cf83aab7adf3186954ccfa6a1aabc2df', 'format': 'iframe', 'height': 50, 'width': 320, 'params': {} };
+        s.src = 'https://www.highperformanceformat.com/cf83aab7adf3186954ccfa6a1aabc2df/invoke.js';
+      } else {
+        window.atOptions = { 'key': '2450bd01dbf5801b733188bd51add913', 'format': 'iframe', 'height': 90, 'width': 728, 'params': {} };
+        s.src = 'https://www.highperformanceformat.com/2450bd01dbf5801b733188bd51add913/invoke.js';
+      }
+      s.async = true;
+      container.appendChild(s);
+    })();
+  </script>
+)}
